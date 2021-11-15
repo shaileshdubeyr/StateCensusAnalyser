@@ -27,8 +27,10 @@ public class CensusAnalyser {
         catch (Exception fileType){
             throw new CensusAnalyserException(fileType.getMessage(), CensusAnalyserException.ExceptionType.WRONG);
         }
-        catch (IOException delimiter){
-            throw new CensusAnalyserException(delimiter.getMessage(), CensusAnalyserException.ExceptionType.DILIMITER);
+        catch (IOException exception ){
+            throw new CensusAnalyserException(e.getMessage(), CensusAnalyserException.ExceptionType.HEADERiNCORRECT);
+        }finally {
+            System.out.println("the header is incorrect");
         }
     }
 }

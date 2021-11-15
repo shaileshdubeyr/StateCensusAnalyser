@@ -52,4 +52,15 @@ public class censusAnalyserTest {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.DILIMITER, e.getMessage());
         }
     }
+
+    @Test
+    public void givenFileTypeHeaderIncorrectShoultresultFalse(){
+        try {
+            CensusAnalyser censusAnalyser = new CensusAnalyser();
+            int numOfRecords = censusAnalyser.loadIndiaCensusData(CSV_FILE_PATH);
+            Assert.assertEquals(29, numOfRecords);
+        } catch (CensusAnalyserException | IOException e) {
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.HEADERiNCORRECT, e.getMessage());
+        }
+    }
 }
