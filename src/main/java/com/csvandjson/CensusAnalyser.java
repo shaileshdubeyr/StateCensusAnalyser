@@ -27,5 +27,8 @@ public class CensusAnalyser {
         catch (Exception fileType){
             throw new CensusAnalyserException(fileType.getMessage(), CensusAnalyserException.ExceptionType.WRONG);
         }
+        catch (IOException delimiter){
+            throw new CensusAnalyserException(delimiter.getMessage(), CensusAnalyserException.ExceptionType.DILIMITER);
+        }
     }
 }

@@ -7,7 +7,7 @@ public class CensusAnalyserException extends Exception{
     public  ExceptionType type;
 
     public enum ExceptionType {
-        CENSUS_FILE_PROBLEM, CSV_FILE_INTERNAL_ISSUES,WRONG;
+        CENSUS_FILE_PROBLEM, CSV_FILE_INTERNAL_ISSUES,WRONG, DILIMITER;
     }
 
     public CensusAnalyserException(String message, ExceptionType type) {

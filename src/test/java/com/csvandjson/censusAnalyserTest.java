@@ -32,13 +32,24 @@ public class censusAnalyserTest {
     }
 
     @Test
-    public void givenFileTypeIncorrectShoultresultFalse(){
+    public void givenFileTypeDelimiterIsIncorrectIncorrectShoultresultFalse(){
         try {
             CensusAnalyser censusAnalyser = new CensusAnalyser();
             int numOfRecords = censusAnalyser.loadIndiaCensusData(CSV_FILE_Extension_PATH);
             Assert.assertEquals(29, numOfRecords);
         } catch (CensusAnalyserException | IOException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.WRONG, e.getStackTrace());
+        }
+    }
+
+    @Test
+    public void givenFileTypeIncorrectShoultresultFalse(){
+        try {
+            CensusAnalyser censusAnalyser = new CensusAnalyser();
+            int numOfRecords = censusAnalyser.loadIndiaCensusData(CSV_FILE_PATH);
+            Assert.assertEquals(29, numOfRecords);
+        } catch (CensusAnalyserException | IOException e) {
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.DILIMITER, e.getMessage());
         }
     }
 }
