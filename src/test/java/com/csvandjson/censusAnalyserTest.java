@@ -15,6 +15,9 @@ public class censusAnalyserTest {
             "\\src\\test\\resources\\IndiaStateCensusData.csv";
     public final String CSV_FILE_PATH_wrong = "C:\\Users\\Admin\\IdeaProjects\\JsonAndCsvPractise" +
             "\\src\\test\\resources\\myfolder\\IndiaStateCensusData.csv";
+    public final String CSV_FILE_Extension_PATH = "C:\\Users\\Admin\\IdeaProjects\\JsonAndCsvPractise" +
+                                                    "\\src\\test\\resources\\IndiaStateCensusData.txt";
+
 
 
     @Test
@@ -23,8 +26,19 @@ public class censusAnalyserTest {
             CensusAnalyser censusAnalyser = new CensusAnalyser();
             int numOfRecords = censusAnalyser.loadIndiaCensusData(CSV_FILE_PATH_wrong);
             Assert.assertEquals(29, numOfRecords);
-        }catch (CensusAnalyserException e ){
+        } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM, e.type);
+        }
+    }
+
+    @Test
+    public void givenFileTypeIncorrectShoultresultFalse(){
+        try {
+            CensusAnalyser censusAnalyser = new CensusAnalyser();
+            int numOfRecords = censusAnalyser.loadIndiaCensusData(CSV_FILE_Extension_PATH);
+            Assert.assertEquals(29, numOfRecords);
+        } catch (CensusAnalyserException | IOException e) {
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.WRONG, e.getStackTrace());
         }
     }
 }
